@@ -12,6 +12,8 @@ public class WaterControl : MonoBehaviour {
 	ThalmicMyo thalmicMyo = null;
 	private bool unlocked = false;
 	private Pose _lastPose = Pose.Unknown;
+	public AudioSource src = null;
+	private string message = "";
 
 	// Use this for initialization
 	void Start () {
@@ -27,34 +29,41 @@ public class WaterControl : MonoBehaviour {
 		{
 			if (thalmicMyo.pose == Pose.WaveIn && _lastPose != thalmicMyo.pose) {
 				_lastPose = thalmicMyo.pose;
-	        	Debug.Log("Wave In");
+	        	//Debug.Log("Wave In");
 				waterSystem.enableEmission = true;
+				src.Play();
 			}
 			else if (thalmicMyo.pose == Pose.WaveOut && _lastPose != thalmicMyo.pose) {
 				_lastPose = thalmicMyo.pose;
-	        	Debug.Log("Wave Out");
+	        	//Debug.Log("Wave Out");
 				waterSystem.enableEmission = false;
+				src.Pause();
 			}
 			else if (thalmicMyo.pose == Pose.DoubleTap && _lastPose != thalmicMyo.pose) {
 				unlocked = false;
 				thalmicMyo.Lock ();
-        		Debug.Log("Locking");
+        		//Debug.Log("Locking");
 			}
 		}
 	}
 
+	void OnGUI() {
+        GUI.Label(new Rect(0, 0, 250, 200), message);
+    }
+
 	void OnTriggerEnter(Collider other) {
         thalmicMyo.Unlock (UnlockType.Hold);
-        Debug.Log("Unlocked");
-
+        //Debug.Log("Unlocked");
 		unlocked = true;
+		message = "Turn the faucet on by waving in \nor off by waving out.";
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (thalmicMyo.unlocked == true) {
 			unlocked = false;
 			thalmicMyo.Lock ();
-	        Debug.Log("Locking");
+	        //Debug.Log("Locking");
 		}
+		message = "";
 	}
 }
