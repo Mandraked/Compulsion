@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
-using VibrationType = Thalmic.Myo.VibrationType;
 
 public class LightControl : MonoBehaviour {
 	public Light myLight;
@@ -51,7 +49,7 @@ public class LightControl : MonoBehaviour {
 	}
 
 	void OnGUI() {
-        GUI.Label(new Rect(0, 0, 250, 200), message);
+        GUI.Label(new Rect(10, 10, 250, 200), message);
     }
 
 	void OnTriggerEnter(Collider other) {
