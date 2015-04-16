@@ -22,7 +22,7 @@ public class WatchControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
-		if (Time.time - prevTime > 45) {
+		if (Time.time - prevTime > 10) {
 			thalmicMyo.Unlock(UnlockType.Hold);
 			message = "You must check your watch.";
 
