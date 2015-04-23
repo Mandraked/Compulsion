@@ -34,7 +34,7 @@ public class WatchControl : MonoBehaviour {
             val = MainScript.FromQ2(myoQ);
 
             ang = val.y - MainScript._antiYaw.y;
-            Debug.Log(Mathf.Round(ang));
+            //Debug.Log(Mathf.Round(ang));
 
             if ((Mathf.Abs(ang - 90) < 15 || Mathf.Abs(ang+270) < 15) && thalmicMyo.pose == Pose.Fist) {
             	prevTime = Time.time;

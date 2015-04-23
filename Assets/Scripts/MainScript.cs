@@ -31,6 +31,7 @@ public class MainScript : MonoBehaviour {
 	public static bool pillowDone = false;
 	public static bool alarmDone = false;
 	public static bool coffeeDone = false;
+	public static bool allDone = false;
 
 	// Use this for initialization
 	void Start () {
@@ -65,9 +66,10 @@ public class MainScript : MonoBehaviour {
 		} else if (!fSet) {
 			num = Time.time;
 		}
-		Debug.Log(tvDone.ToString() + mainLightDone.ToString() + bathroomLightDone.ToString() + pillowDone.ToString() + waterDone.ToString() + alarmDone.ToString() + coffeeDone.ToString());
+		//Debug.Log(tvDone.ToString() + mainLightDone.ToString() + bathroomLightDone.ToString() + pillowDone.ToString() + waterDone.ToString() + alarmDone.ToString() + coffeeDone.ToString());
 		if (tvDone && mainLightDone && bathroomLightDone && pillowDone && waterDone && alarmDone && coffeeDone) {
 			message = "Congratulations, you are ready to leave.";
+			allDone = true;
 		}
 	}
 
