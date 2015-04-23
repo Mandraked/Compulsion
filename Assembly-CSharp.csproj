@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BathroomDoorControlIn.cs" />
      <Compile Include="Assets\Myo Samples\Scripts\ColorBoxByPose.cs" />
      <Compile Include="Assets\Myo Samples\Scripts\JointOrientation.cs" />
      <Compile Include="Assets\Myo Samples\Scripts\SampleSceneGUI.cs" />
@@ -60,22 +59,36 @@
      <Compile Include="Assets\Myo\Scripts\Myo.NET\libmyo.cs" />
      <Compile Include="Assets\Myo\Scripts\ThalmicHub.cs" />
      <Compile Include="Assets\Myo\Scripts\ThalmicMyo.cs" />
+     <Compile Include="Assets\Scripts\AlarmControl.cs" />
      <Compile Include="Assets\Scripts\BathroomDoorControlExt.cs" />
+     <Compile Include="Assets\Scripts\BathroomDoorControlIn.cs" />
+     <Compile Include="Assets\Scripts\CoffeeControl.cs" />
      <Compile Include="Assets\Scripts\LightControl.cs" />
      <Compile Include="Assets\Scripts\MainScript.cs" />
      <Compile Include="Assets\Scripts\PillowControl.cs" />
+     <Compile Include="Assets\Scripts\TVControl.cs" />
      <Compile Include="Assets\Scripts\WatchControl.cs" />
      <Compile Include="Assets\Scripts\WaterControl.cs" />
+     <None Include="Assets\Models\Bedroom furniture\Clock\archibase.net.txt" />
+     <None Include="Assets\Models\ToiletPaper\archibase.net.txt" />
      <None Include="Assets\Models\InteriorDoor\ArchiBase.net.txt" />
      <None Include="Assets\Models\FrontDoor\archibase.net.txt" />
+     <None Include="Assets\Models\Fruit\archibase.net.txt" />
+     <None Include="Assets\Models\Bedroom furniture\Wardrobe\archibase.net.txt" />
      <None Include="Assets\Models\Sink\archibase.net.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="Assets\Models\Pictures\Picture2\archibase.net.txt" />
+     <None Include="Assets\Models\Pictures\Picture3\archibase.net.txt" />
      <None Include="Assets\Myo\README-MyoUnity.txt" />
      <None Include="Assets\Models\refrigerator\archibase.net.txt" />
+     <None Include="Assets\Models\Bedroom furniture\TableLamp\archibase.net.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+     <None Include="Assets\Models\Bedroom furniture\Nightstand\archibase.net.txt" />
      <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\Models\CoffeeMaker\archibase.net.txt" />
+     <None Include="Assets\Models\Bedroom furniture\Bed\archibase.net.txt" />
+     <None Include="Assets\Models\Pictures\Picture1\archibase.net.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

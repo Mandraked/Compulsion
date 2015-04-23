@@ -18,6 +18,11 @@ public class BathroomDoorControlExt : MonoBehaviour {
 
 	public bool useX = true;
 
+	private bool isOpenX = false;
+	private bool isOpenZ = false;
+	private bool isCloseX = false;
+	private bool isCloseZ = false;
+
 	ThalmicMyo thalmicMyo = null;
 
 	private bool unlocked = false;
@@ -32,32 +37,53 @@ public class BathroomDoorControlExt : MonoBehaviour {
 		thalmicMyo = myo.GetComponent<ThalmicMyo> ();
 
 		if (unlocked) {
-			if (unlocked) {
-				if (/*thalmicMyo.pose == Pose.WaveOut*/ true) {
-					if (useX) {
-						if (doorOne.transform.position.x > openX) {
-							doorOne.transform.Translate(-Time.deltaTime, 0, 0, null);
-							doorTwo.transform.Translate(-Time.deltaTime, 0, 0, null);
-						}
-					} else {
-						if (doorOne.transform.position.z < openZ) {
-							doorOne.transform.Translate(0, 0, Time.deltaTime, null);
-							doorTwo.transform.Translate(0, 0, Time.deltaTime, null);
-						}
-					}
-				} else if (thalmicMyo.pose == Pose.WaveIn) {
-					if (useX) {
-						if (doorOne.transform.position.x < closedX) {
-							doorOne.transform.Translate(-Time.deltaTime, 0, 0, null);
-							doorTwo.transform.Translate(-Time.deltaTime, 0, 0, null);
-						}
-					} else {
-						if (doorOne.transform.position.z > closedZ) {
-							doorOne.transform.Translate(0, 0, -Time.deltaTime, null);
-							doorTwo.transform.Translate(0, 0, -Time.deltaTime, null);
-						}
-					}
+			if (thalmicMyo.pose == Pose.WaveOut) {
+				if (useX) {
+					isOpenX = true;
+					isCloseX = false;
+				} else {
+					isOpenZ = true;
+					isCloseZ = false;
 				}
+			} else if (thalmicMyo.pose == Pose.WaveIn) {
+				if (useX) {
+					isCloseX = true;
+					isOpenX = false;
+				} else {
+					isCloseZ = true;
+					isOpenZ = false;
+				}
+			}
+		}
+
+		if (isOpenX) {
+			if (doorOne.transform.position.x > openX) {
+				doorOne.transform.Translate(-Time.deltaTime, 0, 0, null);
+				doorTwo.transform.Translate(-Time.deltaTime, 0, 0, null);
+			} else {
+				isOpenX = false;
+			}
+		} else if (isCloseX) {
+			if (doorOne.transform.position.x < closedX) {
+				doorOne.transform.Translate(Time.deltaTime, 0, 0, null);
+				doorTwo.transform.Translate(Time.deltaTime, 0, 0, null);
+			} else {
+				isCloseX = false;
+			}
+		}
+		if (isOpenZ) {
+			if (doorOne.transform.position.z < openZ) {
+				doorOne.transform.Translate(0, 0, Time.deltaTime, null);
+				doorTwo.transform.Translate(0, 0, Time.deltaTime, null);
+			} else {
+				isOpenZ = false;
+			}
+		} else if (isCloseZ) {
+			if (doorOne.transform.position.z > closedZ) {
+				doorOne.transform.Translate(0, 0, -Time.deltaTime, null);
+				doorTwo.transform.Translate(0, 0, -Time.deltaTime, null);
+			} else {
+				isCloseZ = false;
 			}
 		}
 	}

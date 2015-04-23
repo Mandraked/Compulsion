@@ -6,12 +6,12 @@ using UnlockType = Thalmic.Myo.UnlockType;
 
 public class MainScript : MonoBehaviour {
 
-	public int magicNumber = 0;
 	public static float height = Screen.height/5;
 	public static float width = Screen.width/5;
 	public static float x;
 	public static float y;
 	private string message = "";
+	private static string countMessage = "";
 
 	public static Quaternion antiYaw;
 	public static Vector3 _antiYaw;
@@ -19,6 +19,18 @@ public class MainScript : MonoBehaviour {
 	public GameObject myo = null;
 	private Pose _lastPose = Pose.Unknown;
 	public static bool angleSet = false;
+
+	private float num = 0.0f;
+	private bool fSet = false;
+
+	// Bools to keep track of progress
+	public static bool tvDone = false;
+	public static bool bathroomLightDone = false;
+	public static bool mainLightDone = false;
+	public static bool waterDone = false;
+	public static bool pillowDone = false;
+	public static bool alarmDone = false;
+	public static bool coffeeDone = false;
 
 	// Use this for initialization
 	void Start () {
@@ -47,13 +59,30 @@ public class MainScript : MonoBehaviour {
             _referenceRoll = rollFromZero (referenceZeroRoll, myo.transform.forward, myo.transform.up);
 
             message = "Thanks for setting forward.";
+            num = Time.time;
+            fSet = true;
             thalmicMyo.Lock();
+		} else if (!fSet) {
+			num = Time.time;
 		}
+		Debug.Log(tvDone.ToString() + mainLightDone.ToString() + bathroomLightDone.ToString() + pillowDone.ToString() + waterDone.ToString() + alarmDone.ToString() + coffeeDone.ToString());
+		if (tvDone && mainLightDone && bathroomLightDone && pillowDone && waterDone && alarmDone && coffeeDone) {
+			message = "Congratulations, you are ready to leave.";
+		}
+	}
+
+	public static void showNumber(string msg) {
+		countMessage = msg;
 	}
 
 	void OnGUI() {
 		GUI.Label(new Rect(x, y, width, height), message);
-		if (Time.time >= 5 && !message.Equals("")) message = "";
+		if (Time.time-num >= 3 && fSet) {
+			fSet = false;
+			message = "";
+		}
+
+		GUI.Label(new Rect(10, 10, 100, 100), countMessage);
 	}
 
 	public static float rollFromZero (Vector3 zeroRoll, Vector3 forward, Vector3 up)

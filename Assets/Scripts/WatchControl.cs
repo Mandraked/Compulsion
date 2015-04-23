@@ -22,7 +22,7 @@ public class WatchControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
-		if (Time.time - prevTime > 10) {
+		if (Time.time - prevTime > 30) {
 			thalmicMyo.Unlock(UnlockType.Hold);
 			message = "You must check your watch.";
 
@@ -33,16 +33,12 @@ public class WatchControl : MonoBehaviour {
 
             val = MainScript.FromQ2(myoQ);
 
-            Debug.Log("anti: " + MainScript._antiYaw.y);
-            Debug.Log("val: " + val.y);
-
             ang = val.y - MainScript._antiYaw.y;
             Debug.Log(Mathf.Round(ang));
 
-            if (Mathf.Abs(ang - 90) < 15 && thalmicMyo.pose == Pose.Fist) {
+            if ((Mathf.Abs(ang - 90) < 15 || Mathf.Abs(ang+270) < 15) && thalmicMyo.pose == Pose.Fist) {
             	prevTime = Time.time;
             	thalmicMyo.Lock();
-            	Debug.Log("here");
             }
 		} else {
 			message = "Watch Time: " + Mathf.Ceil(Time.time-prevTime).ToString();

@@ -38,6 +38,8 @@ public class PillowControl : MonoBehaviour {
 				if (Mathf.Abs(currentAng - 308) < 10 && !hasVibrated) {
 					thalmicMyo.Vibrate(VibrationType.Short);
 					hasVibrated = true;
+
+					MainScript.pillowDone = true;
 				}
 			}
 		}

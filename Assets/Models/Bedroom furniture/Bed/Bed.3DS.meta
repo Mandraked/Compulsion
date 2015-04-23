@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 5de164184ddefa644b0e2f18cb5f7a03
+timeCreated: 1429744811
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Arch37_030
+    100002: Arch37_031
+    100004: Arch37_032
+    100006: //RootNode
+    100008: Box004
+    100010: Box005
+    100012: Box006
+    100014: Box007
+    100016: Box008
+    100018: Box009
+    100020: Box010
+    100022: Box011
+    100024: ChamferBox
+    100026: Circle016
+    100028: Circle017
+    100030: Line015
+    100032: Line016
+    100034: Line017
+    100036: Line018
+    100038: Rectangle0
+    100040: Rectangle1
+    100042: Rectangle2
+    400000: Arch37_030
+    400002: Arch37_031
+    400004: Arch37_032
+    400006: //RootNode
+    400008: Box004
+    400010: Box005
+    400012: Box006
+    400014: Box007
+    400016: Box008
+    400018: Box009
+    400020: Box010
+    400022: Box011
+    400024: ChamferBox
+    400026: Circle016
+    400028: Circle017
+    400030: Line015
+    400032: Line016
+    400034: Line017
+    400036: Line018
+    400038: Rectangle0
+    400040: Rectangle1
+    400042: Rectangle2
+    2300000: Arch37_030
+    2300002: Arch37_031
+    2300004: Arch37_032
+    2300006: Box004
+    2300008: Box005
+    2300010: Box006
+    2300012: Box007
+    2300014: Box008
+    2300016: Box009
+    2300018: Box010
+    2300020: Box011
+    2300022: ChamferBox
+    2300024: Circle016
+    2300026: Circle017
+    2300028: Line015
+    2300030: Line016
+    2300032: Line017
+    2300034: Line018
+    2300036: Rectangle0
+    2300038: Rectangle1
+    2300040: Rectangle2
+    3300000: Arch37_030
+    3300002: Arch37_031
+    3300004: Arch37_032
+    3300006: Box004
+    3300008: Box005
+    3300010: Box006
+    3300012: Box007
+    3300014: Box008
+    3300016: Box009
+    3300018: Box010
+    3300020: Box011
+    3300022: ChamferBox
+    3300024: Circle016
+    3300026: Circle017
+    3300028: Line015
+    3300030: Line016
+    3300032: Line017
+    3300034: Line018
+    3300036: Rectangle0
+    3300038: Rectangle1
+    3300040: Rectangle2
+    4300000: Box004
+    4300002: Rectangle1
+    4300004: Box005
+    4300006: Box006
+    4300008: Box007
+    4300010: Box008
+    4300012: Box009
+    4300014: Box010
+    4300016: Box011
+    4300018: Rectangle2
+    4300020: ChamferBox
+    4300022: Line015
+    4300024: Line016
+    4300026: Line017
+    4300028: Line018
+    4300030: Circle016
+    4300032: Circle017
+    4300034: Arch37_031
+    4300036: Arch37_032
+    4300038: Rectangle0
+    4300040: Arch37_030
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
