@@ -3,6 +3,7 @@ using System.Collections;
 
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
+using VibrationType = Thalmic.Myo.VibrationType;
 
 public class WatchControl : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class WatchControl : MonoBehaviour {
 	private Vector3 val;
 
 	private Quaternion myoQuat;
+	private bool wasUnlocked = false;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,10 @@ public class WatchControl : MonoBehaviour {
 	void Update () {
 		ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
 		if (Time.time - prevTime > 30) {
+			if (thalmicMyo.unlocked) {
+				wasUnlocked = true;
+				//thalmicMyo.Vibrate(VibrationType.Short);
+			}
 			thalmicMyo.Unlock(UnlockType.Hold);
 			message = "You must check your watch.";
 
@@ -38,7 +44,8 @@ public class WatchControl : MonoBehaviour {
 
             if ((Mathf.Abs(ang - 90) < 15 || Mathf.Abs(ang+270) < 15) && thalmicMyo.pose == Pose.Fist) {
             	prevTime = Time.time;
-            	thalmicMyo.Lock();
+            	if (!wasUnlocked) thalmicMyo.Lock();
+            	wasUnlocked = false;
             }
 		} else {
 			message = "Watch Time: " + Mathf.Ceil(Time.time-prevTime).ToString();
