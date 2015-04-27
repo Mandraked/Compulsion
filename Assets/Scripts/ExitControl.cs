@@ -16,7 +16,7 @@ public class ExitControl : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (MainScript.allDone) {
 			//Debug.Log("Exiting");
-			Application.Quit();
+			Application.LoadLevel (0);
 		}
 	}
 }

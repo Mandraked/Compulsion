@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\TVControl.cs" />
      <Compile Include="Assets\Scripts\WatchControl.cs" />
      <Compile Include="Assets\Scripts\WaterControl.cs" />
+     <Compile Include="Assets\TitleScreenStuff\menuScript.cs" />
      <None Include="Assets\Models\Bedroom furniture\Clock\archibase.net.txt" />
      <None Include="Assets\Models\ToiletPaper\archibase.net.txt" />
      <None Include="Assets\Models\BarStool\archibase.net.txt" />

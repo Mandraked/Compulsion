@@ -7,8 +7,10 @@ using UnlockType = Thalmic.Myo.UnlockType;
 public class MainScript : MonoBehaviour {
 
 	public static float height = Screen.height/5;
-	public static float width = Screen.width/5;
+	public static float width = Screen.width/2;
+	public static float width2 = Screen.width/5;
 	public static float x;
+	public static float x2;
 	public static float y;
 	private string message = "";
 	private static string countMessage = "";
@@ -33,11 +35,14 @@ public class MainScript : MonoBehaviour {
 	public static bool coffeeDone = false;
 	public static bool allDone = false;
 
+	public static GUIStyle myStyle = null;
+
 	// Use this for initialization
 	void Start () {
 		//message = "Welcome to compulsion, the magic number is " + magicNumber + ".";
 		message = "Welcome. Make a fist with your arm perpendicular to your body and your palm toward the ground.";
 		x = Screen.width/2-width/2;
+		x2 = Screen.width/2-width2/2;
 		y = Screen.height/2 - height/2;
 	}
 	
@@ -78,13 +83,21 @@ public class MainScript : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Label(new Rect(x, y, width, height), message);
+		myStyle = new GUIStyle();
+		myStyle.font = (Font)Resources.Load("Fonts/comic", typeof(Font));
+		myStyle.fontSize = 15;
+		myStyle.wordWrap = true;
+		myStyle.normal.textColor = Color.black;
+		myStyle.fontStyle = FontStyle.Bold;
+		myStyle.alignment = TextAnchor.UpperCenter;
+
+		GUI.Label(new Rect(x, y, width, height), message, myStyle);
 		if (Time.time-num >= 3 && fSet) {
 			fSet = false;
 			message = "";
 		}
 
-		GUI.Label(new Rect(10, 10, 100, 100), countMessage);
+		GUI.Label(new Rect(10, 10, 100, 100), countMessage, myStyle);
 	}
 
 	public static float rollFromZero (Vector3 zeroRoll, Vector3 forward, Vector3 up)

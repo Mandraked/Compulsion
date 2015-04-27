@@ -53,6 +53,6 @@ public class WatchControl : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Label(new Rect(MainScript.x, 10, MainScript.width, MainScript.height), message);
+		GUI.Label(new Rect(MainScript.x2, 10, MainScript.width2, MainScript.height), message, MainScript.myStyle);
 	}
 }
