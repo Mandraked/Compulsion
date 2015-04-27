@@ -52,6 +52,7 @@
      <None Include="Assets\Models\BarStool\archibase.net.txt" />
      <None Include="Assets\Models\InteriorDoor\ArchiBase.net.txt" />
      <None Include="Assets\Models\Toaster\archibase.net.txt" />
+     <None Include="Assets\Models\KitchenSink\archibase.net.txt" />
      <None Include="Assets\Models\Oven\archibase.net.txt" />
      <None Include="Assets\Models\Rug\archibase.net.txt" />
      <None Include="Assets\Models\FrontDoor\archibase.net.txt" />
@@ -59,7 +60,6 @@
      <None Include="Assets\Models\Bedroom furniture\Wardrobe\archibase.net.txt" />
      <None Include="Assets\Models\Plant\archibase.net.txt" />
      <None Include="Assets\Models\Sink\archibase.net.txt" />
-     <None Include="Assets\SkySphere_V1\Documentation\How to use.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Models\Pictures\Picture2\archibase.net.txt" />
      <None Include="Assets\Models\Pictures\Picture3\archibase.net.txt" />
