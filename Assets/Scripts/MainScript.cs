@@ -36,6 +36,10 @@ public class MainScript : MonoBehaviour {
 	public static bool allDone = false;
 
 	public static GUIStyle myStyle = null;
+	private GUIStyle listStyle = null;
+	public static float winTimer = 300.0f;
+
+	private string listText = "";
 
 	// Use this for initialization
 	void Start () {
@@ -44,10 +48,24 @@ public class MainScript : MonoBehaviour {
 		x = Screen.width/2-width/2;
 		x2 = Screen.width/2-width2/2;
 		y = Screen.height/2 - height/2;
+
+		myStyle = new GUIStyle();
+		myStyle.font = (Font)Resources.Load("Fonts/comic", typeof(Font));
+		myStyle.fontSize = 15;
+		myStyle.wordWrap = true;
+		myStyle.normal.textColor = Color.black;
+		myStyle.fontStyle = FontStyle.Bold;
+		myStyle.alignment = TextAnchor.UpperCenter;
+
+		listStyle = new GUIStyle(myStyle);
+		listStyle.alignment = TextAnchor.UpperLeft;
+		listStyle.fontStyle = FontStyle.Normal;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		updateListText();
+
 		ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
 
 		if (thalmicMyo.pose != _lastPose && thalmicMyo.pose == Pose.Fist && !angleSet) {
@@ -64,7 +82,7 @@ public class MainScript : MonoBehaviour {
             Vector3 referenceZeroRoll = computeZeroRollVector (myo.transform.forward);
             _referenceRoll = rollFromZero (referenceZeroRoll, myo.transform.forward, myo.transform.up);
 
-            message = "Thanks for setting forward.";
+            message = "Thanks for setting forward. You have " + Mathf.Floor(winTimer)/60 + ":" + ((winTimer%60==0)?winTimer%60:00) + " to finish your tasks in any order.";
             num = Time.time;
             fSet = true;
             thalmicMyo.Lock();
@@ -78,26 +96,33 @@ public class MainScript : MonoBehaviour {
 		}
 	}
 
+	void updateListText() {
+		string str = "";
+		if (!alarmDone) str += "Turn off bedroom alarm\n";
+		if (!tvDone) str += "Turn off TV\n";
+		if (!mainLightDone) str += "Turn off living room light\n";
+		if (!bathroomLightDone) str += "Turn off bathroom light\n";
+		if (!pillowDone) str += "Align the couch pillow\n";
+		if (!waterDone) str += "Use the bathroom sink\n";
+		if (!coffeeDone) str += "Make coffee\n";
+		listText = str;
+	}
+
 	public static void showNumber(string msg) {
 		countMessage = msg;
 	}
 
 	void OnGUI() {
-		myStyle = new GUIStyle();
-		myStyle.font = (Font)Resources.Load("Fonts/comic", typeof(Font));
-		myStyle.fontSize = 15;
-		myStyle.wordWrap = true;
-		myStyle.normal.textColor = Color.black;
-		myStyle.fontStyle = FontStyle.Bold;
-		myStyle.alignment = TextAnchor.UpperCenter;
 
 		GUI.Label(new Rect(x, y, width, height), message, myStyle);
-		if (Time.time-num >= 3 && fSet) {
+		if (Time.time-num >= 5 && fSet) {
 			fSet = false;
 			message = "";
 		}
 
 		GUI.Label(new Rect(10, 10, 100, 100), countMessage, myStyle);
+
+		GUI.Label(new Rect(10, Screen.height/2-150, 200, 300), listText, listStyle);
 	}
 
 	public static float rollFromZero (Vector3 zeroRoll, Vector3 forward, Vector3 up)

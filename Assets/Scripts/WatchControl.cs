@@ -15,6 +15,8 @@ public class WatchControl : MonoBehaviour {
 
 	private Quaternion myoQuat;
 	private bool wasUnlocked = false;
+	private bool stillPlaying = true;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,8 +25,15 @@ public class WatchControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Time.time > MainScript.winTimer) {
+			stillPlaying = false;
+			message = "You have missed your ride.";
+			MainScript.myStyle.normal.textColor = Color.red;
+			MainScript.myStyle.fontSize = 30;
+		}
+
 		ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
-		if (Time.time - prevTime > 30) {
+		if (Time.time - prevTime > 30 && stillPlaying) {
 			if (thalmicMyo.unlocked) {
 				wasUnlocked = true;
 				//thalmicMyo.Vibrate(VibrationType.Short);
