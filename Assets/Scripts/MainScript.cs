@@ -37,7 +37,7 @@ public class MainScript : MonoBehaviour {
 
 	public static GUIStyle myStyle = null;
 	private GUIStyle listStyle = null;
-	public static float winTimer = 60.0f;
+	public static float winTimer = 300.0f;
 
 	private string listText = "";
 
