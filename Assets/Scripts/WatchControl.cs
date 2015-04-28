@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using UnityStandardAssets.Characters.FirstPerson;
+
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using VibrationType = Thalmic.Myo.VibrationType;
@@ -9,13 +11,17 @@ public class WatchControl : MonoBehaviour {
 
 	private float prevTime = 0;
 	private string message = "";
+	public GameObject player = null;
 	public GameObject myo = null;
+	public AudioSource heart = null;
 	private float ang = 0.0f;
 	private Vector3 val;
 
 	private Quaternion myoQuat;
 	private bool wasUnlocked = false;
 	private bool stillPlaying = true;
+
+	public float watchTime = 300.0f;
 
 
 	// Use this for initialization
@@ -33,11 +39,17 @@ public class WatchControl : MonoBehaviour {
 		}
 
 		ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo> ();
-		if (Time.time - prevTime > 30 && stillPlaying) {
+		if (Time.time - prevTime > watchTime && stillPlaying) {
 			if (thalmicMyo.unlocked) {
 				wasUnlocked = true;
 				//thalmicMyo.Vibrate(VibrationType.Short);
 			}
+			if (!heart.isPlaying) heart.Play();
+			if (heart.volume<1) heart.volume += (float)(Time.time-prevTime-watchTime)*0.001f;
+
+			shakeScreen((float)(Time.time-prevTime-watchTime)*0.05f);
+			if (FirstPersonController.m_WalkSpeed > 0) FirstPersonController.m_WalkSpeed -= (float)(Time.time-prevTime-watchTime)*.0005f;
+
 			thalmicMyo.Unlock(UnlockType.Hold);
 			message = "You must check your watch.";
 
@@ -55,10 +67,17 @@ public class WatchControl : MonoBehaviour {
             	prevTime = Time.time;
             	if (!wasUnlocked) thalmicMyo.Lock();
             	wasUnlocked = false;
+            	heart.volume = 0.0f;
+            	heart.Stop();
+            	FirstPersonController.m_WalkSpeed = 5;
             }
 		} else {
 			message = "Watch Time: " + Mathf.Ceil(Time.time-prevTime).ToString();
 		}
+	}
+
+	void shakeScreen(float shakeAmt) {
+		player.transform.Rotate(Random.insideUnitSphere * shakeAmt);
 	}
 
 	void OnGUI() {

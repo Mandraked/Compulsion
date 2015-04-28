@@ -37,12 +37,13 @@ public class MainScript : MonoBehaviour {
 
 	public static GUIStyle myStyle = null;
 	private GUIStyle listStyle = null;
-	public static float winTimer = 300.0f;
+	public static float winTimer = 60.0f;
 
 	private string listText = "";
 
 	// Use this for initialization
 	void Start () {
+		Cursor.visible = false;
 		//message = "Welcome to compulsion, the magic number is " + magicNumber + ".";
 		message = "Welcome. Make a fist with your arm perpendicular to your body and your palm toward the ground.";
 		x = Screen.width/2-width/2;
@@ -82,7 +83,7 @@ public class MainScript : MonoBehaviour {
             Vector3 referenceZeroRoll = computeZeroRollVector (myo.transform.forward);
             _referenceRoll = rollFromZero (referenceZeroRoll, myo.transform.forward, myo.transform.up);
 
-            message = "Thanks for setting forward. You have " + Mathf.Floor(winTimer)/60 + ":" + ((winTimer%60==0)?winTimer%60:00) + " to finish your tasks in any order.";
+            message = "Thanks for setting forward. You have " + winTimer + " seconds to finish your tasks in any order.";
             num = Time.time;
             fSet = true;
             thalmicMyo.Lock();
@@ -113,7 +114,7 @@ public class MainScript : MonoBehaviour {
 	}
 
 	void OnGUI() {
-
+		
 		GUI.Label(new Rect(x, y, width, height), message, myStyle);
 		if (Time.time-num >= 5 && fSet) {
 			fSet = false;
