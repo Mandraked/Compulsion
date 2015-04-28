@@ -12,6 +12,7 @@ public class menuScript : MonoBehaviour
 	void Start ()
 		
 	{
+		Cursor.visible = true;
 		quitMenu = quitMenu.GetComponent<Canvas>();
 		startText = startText.GetComponent<Button> ();
 		exitText = exitText.GetComponent<Button> ();
