@@ -7,4 +7,5 @@ Known issues:
   
 ToDo:  
 -Pause menu  
--Better instructions
+-Better instructions  
+-End sequences
