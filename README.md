@@ -8,4 +8,5 @@ Known issues:
 ToDo:  
 -Pause menu  
 -Better instructions  
--End sequences
+-End sequences  
+-Reset when back to main menu
