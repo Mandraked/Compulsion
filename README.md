@@ -7,3 +7,4 @@ Known issues:
   
 ToDo:  
 -Pause menu  
+-Better instructions
